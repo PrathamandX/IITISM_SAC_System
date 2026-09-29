@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.db
+frontend/static/uploads/*
+!frontend/static/uploads/.gitkeep
+.pytest_cache/

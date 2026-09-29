@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dashboard &middot; SAC Hostel Management{% endblock %}
+{% block header %}
+<span id="who"></span>
+<button id="logout" class="link">Logout</button>
+{% endblock %}
+{% block content %}
+<div class="layout">
+  <nav id="menu"></nav>
+  <section id="panel" class="card"><p>Select a task from the menu.</p></section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', path='app.js') }}"></script>
+{% endblock %}

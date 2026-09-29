@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login &middot; SAC Hostel Management{% endblock %}
+{% block content %}
+<section class="card login">
+  <h2>Sign in</h2>
+  <form id="login-form">
+    <label>Username / Roll no <input name="username" required autocomplete="username"></label>
+    <label>Password <input name="password" type="password" required autocomplete="current-password"></label>
+    <button type="submit">Login</button>
+    <p id="login-error" class="error"></p>
+  </form>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const res = await fetch("/api/auth/login", { method: "POST", body: new URLSearchParams(new FormData(e.target)) });
+    const data = await res.json();
+    if (!res.ok) return (document.getElementById("login-error").textContent = data.detail);
+    sessionStorage.setItem("token", data.access_token);
+    location.href = "/dashboard";
+  });
+</script>
+{% endblock %}
