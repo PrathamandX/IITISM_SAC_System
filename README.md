@@ -190,15 +190,3 @@ TOKEN=$(curl -s -X POST localhost:8000/api/auth/login -d "username=chairman&pass
 curl -X POST localhost:8000/api/hostels -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{"name":"Jasper","amenity_charge":500}'
 curl localhost:8000/api/occupancy -H "Authorization: Bearer $TOKEN"
 ```
-
----
-
-## 7. Troubleshooting
-| Problem | Fix |
-|---|---|
-| `Missing required environment variable` | Create `.env` from `.env.example` |
-| `psql: command not found` (Windows) | Use the full path `C:\Program Files\PostgreSQL\16\bin\psql.exe`, or Docker |
-| `connection refused` on port 5432 | PostgreSQL / the Docker container is not running |
-| `password authentication failed` | `POSTGRES_PASSWORD` in `.env` doesn't match the database |
-| Login fails for the admin | The admin is only created when the `users` table is empty; check `ADMIN_*` in `.env` |
-| Page shows old styling | Hard refresh (Ctrl+F5) |
